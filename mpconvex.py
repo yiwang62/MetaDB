@@ -21,7 +21,6 @@
 """ Make sure that you have the Materials API key.
 To use the MAPI, you need to first have an API key. Please keep your API key safe and you should never share your key with anyone. If your key is compromised, you can regenerate the key again by visiting your dashboard page. you need first to login into your account with gmail or facebook,  them click the API tab followed by "dashborad" located under the "API keyes" heading. The click "Generate API Key". Finally copy it. 
 """
-MY_API_KEY = 'TaGceME0us8CzWNt'
 
 
 import os
@@ -37,6 +36,12 @@ from pymatgen.ext.matproj import MPRester, Composition
 import pandas as pd
 from pandas import ExcelWriter
 from pandas import ExcelFile
+
+# read MP API key from json file
+path = os.path.realpath(__file__)
+path,_ = os.path.split(path)
+f = open (os.path.join(path,'MY_API_KEY.json'), "r")
+MY_API_KEY = json.loads(f.read())['MY_API_KEY']
 
 def myjsonout(data,fp,indent="",comma=""):
 	#print (data)
